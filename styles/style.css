@@ -1,0 +1,82 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Nav Bar */
+header {
+    --nav-height: 4.5em;
+    height: var(--nav-height);
+
+}
+
+nav {
+    background-color: #E1E1E1;
+    position: fixed;
+    display: flex;
+    height: var(--nav-height);
+    align-items: center;
+    gap: 4em;
+    padding-inline: 1em;
+    width: 100vw;
+}
+
+
+nav .logo {
+    height: 77.78%;
+
+}
+
+.nav-list {
+    font-size: 2rem;
+}
+
+/* just to showcase the float I will use it*/
+.nav-list li {
+    float: left;
+}
+
+.nav-list li:first-child {
+    margin-inline-end: 1em;
+}
+
+
+.nav-list a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-list .active a {
+    color: #4A4A4A;
+    pointer-events: none;
+}
+
+
+/* footer */
+footer {
+    height: 4em;
+    background-color: #E1E1E1;
+    font-size: .75em;
+    display: grid;
+    align-items: center;
+    padding: 1em;
+}
+
+footer span {
+    vertical-align: middle;
+
+}
+
+footer .icon {
+    font-size: 1.5rem;
+    padding-inline-end: .4rem;
+}
+
+@media (max-width:1440px) {
+    :root{
+        font-size:12px;
+    }
+    
+}

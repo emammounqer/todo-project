@@ -1,0 +1,86 @@
+/* first section */
+main {
+    flex: 1;
+}
+
+#my-information {
+    background-color: #5B5B5B;
+    color: white;
+    padding: 4em;
+
+    display: flex;
+    gap: 10em;
+}
+
+#my-information h2 {
+    font-size: 3rem;
+    padding-bottom: 1em;
+}
+
+#my-information p {
+    font-size: 1.4rem;
+    line-height: 1.2em;
+}
+
+#my-information img {
+    height: 20em;
+    width: auto;
+}
+
+
+
+/* second section */
+#contact-form {
+    padding: 4em;
+    margin-top: 4.5em;
+}
+
+#contact-form h2 {
+    position: relative;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+#contact-form h2::after {
+    content: '';
+    display: block;
+    position: absolute;
+    border: 1px solid black;
+
+    width: 10em;
+
+    bottom: -0.1em;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+#contact-form form {
+    width: 35em;
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    font-size: 1.5rem;
+    gap: 1em;
+    align-items: center;
+}
+
+#contact-form label[for='message'] {
+    align-self: start;
+}
+
+#contact-form input,
+#contact-form textarea {
+    font-size: inherit;
+    padding: .5em 1em;
+}
+
+
+#contact-form input[type='submit'] {
+    border: none;
+    background-color: #7A7A7A;
+    font-size: inherit;
+    padding: .5em 1em;
+    cursor: pointer;
+
+    grid-column-start: 2;
+}

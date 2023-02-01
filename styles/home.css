@@ -1,0 +1,47 @@
+/* Main */
+main {
+    background-color: #5B5B5B;
+    flex: 1;
+    padding-block: 5em;
+    padding: 7em;
+    color: white;
+
+
+}
+
+main h1 {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: .5em;
+}
+
+/* table */
+.task-table {
+    background-color: #363636;
+    font-size: 1.5rem;
+    width: 100%;
+}
+
+.task-table th {
+    text-align: start;
+    font-size: 2rem;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.task-table th,
+.task-table td {
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    border-color: #5B5B5B;
+    padding: .5em;
+}
+
+table select {
+    color: inherit;
+    font-size: .75em;
+    background-color: transparent;
+    border: 1px solid antiquewhite;
+    height: 100%;
+    width: 100%;
+}
