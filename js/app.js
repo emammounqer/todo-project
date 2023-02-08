@@ -1,33 +1,30 @@
 'use strict';
 
-const userName = askQuestion('what is your name ?', notEmpty());
-const userGender = askQuestion('what is your gender ? male or female ?', isOneOf('male', 'female'));
-const userAge = askQuestion('what is your age ?', largerThan(0));
-welcoming(userName, userGender);
+let userName = prompt('what is your name ?');
+while (userName.length < 1) {
+    userName = prompt('what is your name ? you should enter valid name.');
+}
 
-const questions = ['q1 ? Yes or No', 'q2 ? Yes or No', 'q3 ? Yes or No']
-const answer = askMultipleQuestions(questions, isOneOf('Yes', 'No'));
+let userGender = prompt('what is your gender ? male or female ?');
 
-console.log(answer);
+let userAge = Number(prompt('what is your age ?'));
+if (userAge <= 0 || isNaN(userAge)) {
+    alert('your age is not valid number or it less or equal to 0.')
+}
+
+welcoming(userName, userGender)
+
+// ------------------- lab 06 -----------------------
+
+const questions = [
+    'Do you love programing?',
+    'Do you use youtube to learn?',
+    'Do you have a project that you want to make?'
+]
+const answers = askMultipleQuestions(questions)
+logQuestionsAndAnswers(questions, answers);
 
 // functions 
-function askQuestion(qus, ...validations) {
-    let ans = prompt(qus);
-
-    while (!isAnswerValid(ans, validations) && ans !== null) {
-        ans = prompt(qus + ' your answer is not valid.');
-    }
-    return ans
-}
-
-function isAnswerValid(ans, validations) {
-    for (let i = 0; i < validations.length; i++) {
-        const validationsCB = validations[i];
-        if (!validationsCB(ans)) return false
-    }
-    return true;
-}
-
 function welcoming(userName, userGender) {
     if (!confirm('do you want to skip the welcoming message ?')) {
         switch (userGender) {
@@ -44,45 +41,35 @@ function welcoming(userName, userGender) {
 
 }
 
-function askMultipleQuestions(questions, ...validations) {
-    const ans = [];
+function askYesNoQuestion(qus) {
+    let ans = modifyToYesOrNo(prompt(qus + ('( Yes , No )')));
+    while (!ans) {
+        ans = modifyToYesOrNo(prompt(qus + ' your answer is must be ( Yes , No )'));
+    }
+    return ans
+}
+
+function modifyToYesOrNo(ans) {
+    const acceptableYesAnswers = ['Yes', 'yes', 'Y', 'y'];
+    const acceptableNoAnswers = ['No', 'no', 'N', 'n'];
+
+    if (acceptableYesAnswers.includes(ans)) return 'Yes';
+    if (acceptableNoAnswers.includes(ans)) return 'No';
+
+    return null
+}
+
+function askMultipleQuestions(questions) {
+    const answers = [];
     for (let i = 0; i < questions.length; i++) {
-        ans[i] = askQuestion(questions[i], ...validations)
+        answers[i] = askYesNoQuestion(questions[i])
     }
-    return ans;
+    return answers;
 }
 
-// the validation for the qus
-function notEmpty() {
-    return (ans) => ans.length >= 1
-}
-
-function isOneOf(...options) {
-    return (ans) => {
-        for (let i = 0; i < options.length; i++) {
-            if (ans === options[i]) return true;
-        }
-        return false
+function logQuestionsAndAnswers(questions, answers) {
+    for (let i = 0; i < questions.length; i++) {
+        console.log(`%c${questions[i]}`, 'text-decoration: underline');
+        console.log(`%c${answers[i]}`, 'font-weight: bold')
     }
 }
-
-function largerThan(num) {
-    return (ans) => {
-        if (!isNumber(ans)) return false
-        if (ans > num) return true
-        return false;
-    }
-}
-
-function isNumber() {
-    return () => !isNaN(Number(ans))
-}
-
-
-
-
-
-
-
-
-
